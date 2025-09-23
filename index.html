@@ -1,10 +1,22 @@
 <!DOCTYPE html>
 <html lang="cs">
 <head>
+    <link rel="icon" type="image/png" href="favicon-32x32.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Basic Plan - MycatHost</title>
     <style>
+        .top-right-logo {
+    position: fixed;   /* logo se „připíchne“ na obrazovku */
+    top: 10px;         /* vzdálenost od horního okraje */
+    right: 10px;       /* vzdálenost od pravého okraje */
+    z-index: 1000;     /* aby nebylo překryté ostatními prvky */
+}
+
+.top-right-logo img {
+    width: 32px;  /* velikost loga */
+    height: 32px;
+}
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -110,6 +122,8 @@
 <body>
 
     <div class="header">
+        <div class="top-right-logo">
+    <img src="favicon-32x32.png" alt="Logo">
         <h1><a href="https://mycathost.cz" style="color: white; text-decoration: none;">Mycat<span>Host</span></a></h1>
     </div>
 
@@ -131,4 +145,5 @@
 
 </body>
 </html>
+
 
