@@ -223,11 +223,25 @@
 
         <form id="serverForm">
             <select id="game">
-                <option selected disabled>Vyberte hru</option>
-                <option>Minecraft</option>
-                <option>Unturned</option>
-                <option>Terraria</option>
-                <option>Rust</option>
+                <option selected disabled>Vyberte verzi</option>
+                <option>1.21</option>
+                <option>1.20</option>
+                <option>1.19</option>
+                <option>1.18</option>
+                <option>1.17</option>
+                <option>1.16</option>
+                <option>1.15</option>
+                <option>1.14</option>
+                <option>1.13</option>
+                <option>1.12</option>
+                <option>1.11</option>
+                <option>1.10</option>
+                <option>1.9</option>
+                <option>1.8</option>
+                <option>1.7</option>
+                <option>1.6</option>
+                <option>1.5</option>
+                <option>1.4</option>
             </select>
 
             <select id="ram">
@@ -239,17 +253,17 @@
             </select>
 
             <select id="storage">
-                <option selected disabled>Vyberte úložiště</option>
-                <option>10 GB</option>
-                <option>20 GB</option>
-                <option>50 GB</option>
-                <option>100 GB</option>
+                <option selected disabled>Vyberte počet hráčů</option>
+                <option>5</option>
+                <option>10</option>
+                <option>20</option>
+                <option>40</option>
             </select>
 
             <select id="os">
-                <option selected disabled>Vyberte operační systém</option>
-                <option>Linux</option>
-                <option>Windows</option>
+                <option selected disabled>Vyberte modifikace</option>
+                <option>Ne</option>
+                <option>Ano</option>
             </select>
 
             <button type="button" onclick="sendEmail()">Odeslat konfiguraci</button>
@@ -273,7 +287,7 @@
 
             const subject = encodeURIComponent("Nová konfigurace serveru");
             const body = encodeURIComponent(
-                `Zákazník vybral následující konfiguraci:\n\nHra: ${game}\nRAM: ${ram}\nÚložiště: ${storage}\nOperační systém: ${os}`
+                `Zákazník vybral následující konfiguraci:\n\nVerze: ${game}\nRAM: ${ram}\nPočet Hráčů: ${storage}\nModifikace: ${os}`
             );
             const mailtoLink = `mailto:klarzygame@gmail.com?subject=${subject}&body=${body}`;
             window.location.href = mailtoLink;
@@ -282,5 +296,6 @@
 
 </body>
 </html>
+
 
 
