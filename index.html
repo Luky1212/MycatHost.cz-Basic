@@ -6,6 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MycatHost Rychlý Minecraft hosting</title>
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
         .top-right-logo {
             position: fixed;
             top: 10px;
@@ -26,6 +30,7 @@
             flex-direction: column;
             min-height: 100vh;
         }
+
         .header {
             background-color: #007BFF;
             padding: 20px;
@@ -33,14 +38,15 @@
         }
         .header h1 {
             color: white;
-            display: inline;
+            display: inline-block;
             font-size: 28px;
+            margin: 0;
         }
         .header h1 span {
             color: red;
         }
 
-        /* NAV: zvětšené karty s obrázky místo barev */
+        /* Navigační karty */
         .nav {
             background-color: #333;
             padding: 14px;
@@ -66,14 +72,16 @@
             background-position: center;
             box-shadow: 0 4px 10px rgba(0,0,0,0.5);
             font-size: 20px;
+            transition: transform 0.15s ease;
         }
         .nav a span {
-            display: inline-block;
             width: 100%;
             text-align: center;
             background: rgba(0,0,0,0.45);
             padding: 8px 6px;
-            box-sizing: border-box;
+        }
+        .nav a:hover {
+            transform: translateY(-4px);
         }
 
         /* Obrázky */
@@ -83,12 +91,7 @@
         .nav a.about { background-image: url('https://iregister.al/wp-content/uploads/2019/04/server-hosting.jpeg'); }
         .nav a.dalsi { background-image: url('https://thumbs.dreamstime.com/b/man-fix-server-network-data-center-room-67131350.jpg'); }
 
-        .nav a:hover {
-            transform: translateY(-4px);
-            transition: transform 0.15s ease;
-        }
-
-        /* --- Velká světlá karta --- */
+        /* --- Výběrová karta --- */
         .selection-table {
             background-color: #f9f9f9;
             color: #000;
@@ -127,6 +130,7 @@
             border-radius: 10px;
             cursor: pointer;
             margin-top: 20px;
+            transition: background 0.2s ease;
         }
         .selection-table button:hover {
             background-color: #0056b3;
@@ -134,18 +138,45 @@
 
         .footer {
             text-align: center;
-            padding: 10px;
+            padding: 12px;
             color: white;
             margin-top: auto;
             font-size: 14px;
         }
 
-        @media (max-width: 600px) {
-            .header h1 { font-size: 22px; }
+        /* --- RESPONSIVNÍ DESIGN --- */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 24px;
+            }
+            .nav a {
+                width: 45%;
+                height: 110px;
+                font-size: 18px;
+            }
+            .selection-table {
+                width: 95%;
+                padding: 30px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header {
+                text-align: center;
+                padding: 15px;
+            }
+            .header h1 {
+                display: block;
+                font-size: 22px;
+            }
+            .top-right-logo {
+                position: static;
+                margin: 0 auto 10px auto;
+                text-align: center;
+            }
             .nav {
                 flex-direction: column;
-                gap: 10px;
-                padding: 10px;
+                gap: 12px;
             }
             .nav a {
                 width: 90%;
@@ -154,10 +185,18 @@
             }
             .selection-table {
                 width: 95%;
-                padding: 25px;
+                padding: 20px;
+            }
+            .selection-table h2 {
+                font-size: 22px;
             }
             .selection-table select {
+                font-size: 16px;
+                padding: 12px;
+            }
+            .selection-table button {
                 font-size: 18px;
+                padding: 12px 20px;
             }
         }
     </style>
@@ -173,14 +212,14 @@
 
     <!-- Navigační odkazy -->
     <div class="nav">
-        <a href="https://luky1212.github.io/MycatHost.cz-Basic/" class="basic"><span>Minecraft</span></a>
-        <a href="https://luky1212.github.io/MycatHost.cz-Beefy/" class="beefy"><span>3D Tisk</span></a>
-        <a href="https://luky1212.github.io/MycatHost.cz-Ultimate/" class="ultimate"><span>Unturned</span></a>
-        <a href="https://luky1212.github.io/MycatHost.cz-AboutUs/" class="about"><span>About Us</span></a>
-        <a href="https://luky1212.github.io/MycatHost.cz-DalsiSluzby/" class="dalsi"><span>Další Služby</span></a>
+        <a href="#" class="basic"><span>Minecraft</span></a>
+        <a href="#" class="beefy"><span>3D Tisk</span></a>
+        <a href="#" class="ultimate"><span>Unturned</span></a>
+        <a href="#" class="about"><span>About Us</span></a>
+        <a href="#" class="dalsi"><span>Další Služby</span></a>
     </div>
 
-    <!-- Velká tabulka s výběry POD navigací -->
+    <!-- Výběrová tabulka -->
     <div class="selection-table">
         <h2>Vyberte konfiguraci serveru</h2>
 
@@ -228,16 +267,20 @@
             const storage = document.getElementById("storage").value;
             const os = document.getElementById("os").value;
 
-            if (game === "Vyberte hru" || ram === "Vyberte RAM" || storage === "Vyberte úložiště" || os === "Vyberte operační systém") {
+            if (!game || !ram || !storage || !os || 
+                game.includes("Vyberte") || ram.includes("Vyberte") || storage.includes("Vyberte") || os.includes("Vyberte")) {
                 alert("⚠️ Vyplňte prosím všechny položky.");
                 return;
             }
 
             const subject = encodeURIComponent("Nová konfigurace serveru");
-            const body = encodeURIComponent(`Zákazník vybral následující konfiguraci:\n\nHra: ${game}\nRAM: ${ram}\nÚložiště: ${storage}\nOperační systém: ${os}`);
+            const body = encodeURIComponent(
+                `Zákazník vybral následující konfiguraci:\n\nHra: ${game}\nRAM: ${ram}\nÚložiště: ${storage}\nOperační systém: ${os}`
+            );
             const mailtoLink = `mailto:klarzygame@gmail.com?subject=${subject}&body=${body}`;
             window.location.href = mailtoLink;
         }
     </script>
+
 </body>
 </html>
