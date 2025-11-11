@@ -39,29 +39,55 @@
         .header h1 span {
             color: red;
         }
-        .nav {
+ .nav {
             background-color: #333;
-            padding: 10px;
+            padding: 14px;
             text-align: center;
             margin-top: 10px;
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 10px;
+            gap: 14px;
         }
         .nav a {
+            position: relative;
             text-decoration: none;
-            font-size: 20px;
-            padding: 8px 16px;
-            border-radius: 5px;
             color: white;
-            display: inline-block;
+            display: inline-flex;
+            align-items: flex-end;
+            justify-content: center;
+            width: 220px;      /* šířka karty */
+            height: 130px;     /* výška karty */
+            border-radius: 10px;
+            overflow: hidden;
+            background-size: cover;
+            background-position: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+            font-size: 20px;
         }
-        .basic { background-color: #2C89E8; }
-        .beefy { background-color: #C9A710; }
-        .ultimate { background-color: purple; }
-        .about { background-color: black; color: white; }
-        .dalsi { background-color: black; color: white; }
+        /* polo-transparentní pás pro lepší čitelnost textu */
+        .nav a span {
+            display: inline-block;
+            width: 100%;
+            text-align: center;
+            background: rgba(0,0,0,0.45);
+            padding: 8px 6px;
+            box-sizing: border-box;
+        }
+
+        /* obrázky (nahraďte soubory svými cestami) */
+        .nav a.basic { background-image: url('nav-basic.jpg'); }
+        .nav a.beefy { background-image: url('nav-beefy.jpg'); }
+        .nav a.ultimate { background-image: url('nav-ultimate.jpg'); }
+        .nav a.about { background-image: url('nav-about.jpg'); }
+        .nav a.dalsi { background-image: url('nav-dalsi.jpg'); }
+
+        /* Zvýraznění při najetí */
+        .nav a:hover {
+            transform: translateY(-4px);
+            transition: transform 0.15s ease;
+        }
+
         .block {
             width: 90%;
             margin: 15px auto;
@@ -73,24 +99,6 @@
         .block:nth-child(odd) { background-color: #333; }
         .block:nth-child(even) { background-color: #007BFF; }
 
-        .features {
-            background-color: #0056b3;
-            padding: 20px;
-            margin: 15px auto;
-            border-radius: 5px;
-            text-align: left;
-            width: 90%;
-            color: black;
-            font-size: 18px;
-        }
-        .features h2 {
-            color: white;
-            margin-top: 0;
-        }
-        .checkmark {
-            color: lime;
-        }
-
         .footer {
             text-align: center;
             padding: 10px;
@@ -101,19 +109,18 @@
 
         /* RESPONSIVNÍ úpravy pro mobily */
         @media (max-width: 600px) {
-            .header h1 {
-                font-size: 22px;
-            }
+            .header h1 { font-size: 22px; }
             .nav {
                 flex-direction: column;
-                gap: 8px;
+                gap: 10px;
+                padding: 10px;
             }
             .nav a {
-                font-size: 16px;
-                padding: 10px;
-                width: 90%; /* odkazy na mobilu široké */
+                width: 90%;
+                height: 100px;
+                font-size: 18px;
             }
-            .block, .features {
+            .block {
                 font-size: 16px;
                 padding: 15px;
             }
@@ -182,6 +189,7 @@
 
 </body>
 </html>
+
 
 
 
