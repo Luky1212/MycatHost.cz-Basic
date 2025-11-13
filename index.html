@@ -4,25 +4,20 @@
     <link rel="icon" type="image/png" href="favicon-32x32.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MycatHost.cz – Minecraft Hosting & Servery</title>
-    <meta name="description" content="Rychlý a spolehlivý Minecraft hosting od MycatHost.cz. Vyber si konfiguraci serveru a hraj bez lagů.">
+    <title>MycatHost.cz – Minecraft Hosting</title>
     <style>
-        * {
-            box-sizing: border-box;
-        }
-
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
             background-color: #1a1a1a;
-            color: #fff;
+            color: white;
             display: flex;
             flex-direction: column;
             min-height: 100vh;
         }
 
-        /* LOGO vpravo nahoře */
+        /* Horní lišta */
         .top-right-logo {
             position: fixed;
             top: 10px;
@@ -34,29 +29,26 @@
             height: 32px;
         }
 
-        /* HLAVIČKA */
         .header {
-            background: linear-gradient(135deg, #007BFF, #003a99);
-            padding: 25px;
+            background-color: #007BFF;
+            padding: 20px;
             text-align: left;
-            border-bottom: 3px solid #ff3333;
         }
         .header h1 {
             color: white;
-            display: inline-block;
-            font-size: 30px;
+            display: inline;
+            font-size: 28px;
             margin: 0;
         }
         .header h1 span {
-            color: #ff3333;
+            color: red;
         }
 
-        /* NAV KARTY */
+        /* Navigace */
         .nav {
             background-color: #333;
             padding: 14px;
             text-align: center;
-            margin-top: 10px;
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
@@ -77,9 +69,9 @@
             background-position: center;
             box-shadow: 0 4px 10px rgba(0,0,0,0.5);
             font-size: 20px;
-            transition: transform 0.15s ease;
         }
         .nav a span {
+            display: inline-block;
             width: 100%;
             text-align: center;
             background: rgba(0,0,0,0.45);
@@ -87,96 +79,88 @@
         }
         .nav a:hover {
             transform: translateY(-4px);
+            transition: transform 0.15s ease;
         }
 
-        /* OBRÁZKY KARET */
+        /* Obrázky tlačítek */
         .nav a.basic { background-image: url('https://store-images.s-microsoft.com/image/apps.60323.14294656681058683.4d17bdd8-7026-429a-846f-cf7836bc9e56.a69e6905-8926-4a48-b243-14a039b97aae?mode=scale&q=90&h=1080&w=1920&format=jpg'); }
         .nav a.beefy { background-image: url('https://s1.raise3d.com/2024/11/7-min.jpg'); }
-        .nav a.ultimate { background-image: url('https://steamcdn-a.akamaihd.net/steamcommunity/public/images/items/304930/c5bc3d72f1f11f4644856d04cc038ee93dfa070d.jpg'); }
         .nav a.about { background-image: url('https://iregister.al/wp-content/uploads/2019/04/server-hosting.jpeg'); }
         .nav a.dalsi { background-image: url('https://thumbs.dreamstime.com/b/man-fix-server-network-data-center-room-67131350.jpg'); }
 
-        /* --- FORMULÁŘ --- */
-        .selection-table {
-            background-color: #f9f9f9;
-            color: #000;
-            width: 90%;
-            max-width: 700px;
-            margin: 40px auto;
-            padding: 40px;
-            border-radius: 16px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-            text-align: center;
-        }
-
-        .selection-table h2 {
-            color: #333;
-            margin-bottom: 30px;
-            font-size: 28px;
-        }
-
-        .selection-table select {
-            display: block;
-            width: 100%;
-            font-size: 20px;
-            padding: 16px;
-            margin: 15px 0;
+        /* Obsah */
+        .content {
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 20px;
+            background: #222;
             border-radius: 10px;
-            border: 1px solid #ccc;
-            background-color: #fff;
+            box-shadow: 0 0 20px rgba(0,0,0,0.4);
+        }
+        .content h2 {
+            color: #00BFFF;
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        .content p {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 15px;
         }
 
-        .selection-table button {
+        /* Formulář */
+        form {
+            background-color: #1e1e1e;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.6);
+            max-width: 600px;
+            margin: 30px auto;
+        }
+        form select, form button {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border: none;
+            font-size: 16px;
+        }
+        form select {
+            background-color: #333;
+            color: white;
+        }
+        form button {
             background-color: #007BFF;
             color: white;
-            font-size: 20px;
-            padding: 14px 28px;
-            border: none;
-            border-radius: 10px;
             cursor: pointer;
-            margin-top: 20px;
-            transition: background 0.2s ease;
+            transition: 0.2s;
+            font-size: 18px;
         }
-        .selection-table button:hover {
+        form button:hover {
             background-color: #0056b3;
         }
-
-        .selection-table h2:last-of-type {
-            font-size: 16px;
-            color: #444;
-            margin-top: 25px;
+        .form-note {
+            text-align: center;
+            color: #bbb;
+            font-size: 14px;
+            margin-top: 10px;
         }
 
-        /* --- SPODNÍ PÁSEK --- */
+        /* Footer */
         .footer {
             text-align: center;
-            padding: 15px;
-            background-color: #0f0f0f;
-            color: #bbb;
+            padding: 10px;
+            color: #ccc;
             margin-top: auto;
-            font-size: 15px;
-            border-top: 1px solid #222;
-        }
-        .footer span {
-            color: #007BFF;
-            font-weight: bold;
+            font-size: 14px;
+            background: #111;
         }
 
-        /* --- RESPONSIVNÍ --- */
-        @media (max-width: 768px) {
-            .header h1 { font-size: 24px; }
-            .nav a { width: 45%; height: 110px; font-size: 18px; }
-            .selection-table { width: 95%; padding: 30px; }
-        }
-
-        @media (max-width: 480px) {
-            .header { text-align: center; padding: 15px; }
-            .header h1 { display: block; font-size: 22px; }
-            .top-right-logo { position: static; margin: 0 auto 10px auto; text-align: center; }
-            .nav { flex-direction: column; gap: 12px; }
-            .nav a { width: 90%; height: 100px; font-size: 18px; }
-            .selection-table { width: 95%; padding: 20px; }
-            .selection-table h2 { font-size: 22px; }
+        @media (max-width: 600px) {
+            .nav { flex-direction: column; }
+            .nav a { width: 90%; height: 100px; }
+            .content { width: 90%; }
         }
     </style>
 </head>
@@ -196,27 +180,20 @@
         <a href="https://luky1212.github.io/MycatHost.cz-DalsiSluzby/" class="dalsi"><span>Další služby</span></a>
     </div>
 
-    <!-- FORMULÁŘ -->
-    <div class="selection-table">
-        <h2>Vyberte konfiguraci Minecraft serveru</h2>
+    <div class="content">
+        <h2>Minecraft Hosting na míru</h2>
+        <p>U nás si můžete jednoduše vybrat konfiguraci Minecraft serveru podle vašich potřeb. Rychlé SSD, nízký ping a bezlagový provoz — ideální pro malé i větší komunity.</p>
+        <p>Vyberte si verzi, množství RAM, počet hráčů a zda chcete server s modifikacemi.</p>
 
         <form id="serverForm">
             <select id="game">
-                <option selected disabled>Vyberte verzi</option>
+                <option selected disabled>Vyberte verzi Minecraftu</option>
                 <option>1.21</option>
                 <option>1.20</option>
                 <option>1.19</option>
                 <option>1.18</option>
                 <option>1.17</option>
                 <option>1.16</option>
-                <option>1.15</option>
-                <option>1.14</option>
-                <option>1.13</option>
-                <option>1.12</option>
-                <option>1.11</option>
-                <option>1.10</option>
-                <option>1.9</option>
-                <option>1.8</option>
             </select>
 
             <select id="ram">
@@ -227,45 +204,45 @@
                 <option>16 GB</option>
             </select>
 
-            <select id="storage">
-                <option selected disabled>Vyberte počet hráčů</option>
+            <select id="players">
+                <option selected disabled>Počet hráčů</option>
                 <option>5</option>
                 <option>10</option>
                 <option>20</option>
                 <option>40</option>
             </select>
 
-            <select id="os">
-                <option selected disabled>Vyberte modifikace</option>
+            <select id="mods">
+                <option selected disabled>Modifikace</option>
                 <option>Ne</option>
                 <option>Ano</option>
             </select>
 
             <button type="button" onclick="sendEmail()">Odeslat konfiguraci</button>
-            <h2>Pokud tlačítko nefunguje, napište nám na <b>klarzygame@gmail.com</b></h2>
+            <div class="form-note">Pokud tlačítko nefunguje, napište nám na <b>klarzygame@gmail.com</b></div>
         </form>
     </div>
 
     <div class="footer">
-        © <span>MycatHost.cz</span> 2025 — Rychlý a spolehlivý Minecraft hosting
+        © 2025 MycatHost.cz — Minecraft hosting & 3D tisk
     </div>
 
     <script>
         function sendEmail() {
             const game = document.getElementById("game").value;
             const ram = document.getElementById("ram").value;
-            const storage = document.getElementById("storage").value;
-            const os = document.getElementById("os").value;
+            const players = document.getElementById("players").value;
+            const mods = document.getElementById("mods").value;
 
-            if (!game || !ram || !storage || !os || 
-                game.includes("Vyberte") || ram.includes("Vyberte") || storage.includes("Vyberte") || os.includes("Vyberte")) {
+            if (!game || !ram || !players || !mods ||
+                game.includes("Vyberte") || ram.includes("Vyberte") || players.includes("Vyberte") || mods.includes("Vyberte")) {
                 alert("⚠️ Vyplňte prosím všechny položky.");
                 return;
             }
 
             const subject = encodeURIComponent("Nová konfigurace serveru");
             const body = encodeURIComponent(
-                `Zákazník vybral následující konfiguraci:\n\nVerze: ${game}\nRAM: ${ram}\nPočet hráčů: ${storage}\nModifikace: ${os}`
+                `Zákazník vybral následující konfiguraci:\n\nVerze: ${game}\nRAM: ${ram}\nPočet hráčů: ${players}\nModifikace: ${mods}`
             );
             const mailtoLink = `mailto:klarzygame@gmail.com?subject=${subject}&body=${body}`;
             window.location.href = mailtoLink;
