@@ -4,12 +4,25 @@
     <link rel="icon" type="image/png" href="favicon-32x32.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MycatHost Rychlý Minecraft hosting</title>
+    <title>MycatHost.cz – Minecraft Hosting & Servery</title>
+    <meta name="description" content="Rychlý a spolehlivý Minecraft hosting od MycatHost.cz. Vyber si konfiguraci serveru a hraj bez lagů.">
     <style>
         * {
             box-sizing: border-box;
         }
 
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #1a1a1a;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* LOGO vpravo nahoře */
         .top-right-logo {
             position: fixed;
             top: 10px;
@@ -21,32 +34,24 @@
             height: 32px;
         }
 
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #1a1a1a;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-
+        /* HLAVIČKA */
         .header {
-            background-color: #007BFF;
-            padding: 20px;
+            background: linear-gradient(135deg, #007BFF, #003a99);
+            padding: 25px;
             text-align: left;
+            border-bottom: 3px solid #ff3333;
         }
         .header h1 {
             color: white;
             display: inline-block;
-            font-size: 28px;
+            font-size: 30px;
             margin: 0;
         }
         .header h1 span {
-            color: red;
+            color: #ff3333;
         }
 
-        /* Navigační karty */
+        /* NAV KARTY */
         .nav {
             background-color: #333;
             padding: 14px;
@@ -84,14 +89,14 @@
             transform: translateY(-4px);
         }
 
-        /* Obrázky */
+        /* OBRÁZKY KARET */
         .nav a.basic { background-image: url('https://store-images.s-microsoft.com/image/apps.60323.14294656681058683.4d17bdd8-7026-429a-846f-cf7836bc9e56.a69e6905-8926-4a48-b243-14a039b97aae?mode=scale&q=90&h=1080&w=1920&format=jpg'); }
         .nav a.beefy { background-image: url('https://s1.raise3d.com/2024/11/7-min.jpg'); }
         .nav a.ultimate { background-image: url('https://steamcdn-a.akamaihd.net/steamcommunity/public/images/items/304930/c5bc3d72f1f11f4644856d04cc038ee93dfa070d.jpg'); }
         .nav a.about { background-image: url('https://iregister.al/wp-content/uploads/2019/04/server-hosting.jpeg'); }
         .nav a.dalsi { background-image: url('https://thumbs.dreamstime.com/b/man-fix-server-network-data-center-room-67131350.jpg'); }
 
-        /* --- Výběrová karta --- */
+        /* --- FORMULÁŘ --- */
         .selection-table {
             background-color: #f9f9f9;
             color: #000;
@@ -136,68 +141,42 @@
             background-color: #0056b3;
         }
 
-        .footer {
-            text-align: center;
-            padding: 12px;
-            color: white;
-            margin-top: auto;
-            font-size: 14px;
+        .selection-table h2:last-of-type {
+            font-size: 16px;
+            color: #444;
+            margin-top: 25px;
         }
 
-        /* --- RESPONSIVNÍ DESIGN --- */
+        /* --- SPODNÍ PÁSEK --- */
+        .footer {
+            text-align: center;
+            padding: 15px;
+            background-color: #0f0f0f;
+            color: #bbb;
+            margin-top: auto;
+            font-size: 15px;
+            border-top: 1px solid #222;
+        }
+        .footer span {
+            color: #007BFF;
+            font-weight: bold;
+        }
+
+        /* --- RESPONSIVNÍ --- */
         @media (max-width: 768px) {
-            .header h1 {
-                font-size: 24px;
-            }
-            .nav a {
-                width: 45%;
-                height: 110px;
-                font-size: 18px;
-            }
-            .selection-table {
-                width: 95%;
-                padding: 30px;
-            }
+            .header h1 { font-size: 24px; }
+            .nav a { width: 45%; height: 110px; font-size: 18px; }
+            .selection-table { width: 95%; padding: 30px; }
         }
 
         @media (max-width: 480px) {
-            .header {
-                text-align: center;
-                padding: 15px;
-            }
-            .header h1 {
-                display: block;
-                font-size: 22px;
-            }
-            .top-right-logo {
-                position: static;
-                margin: 0 auto 10px auto;
-                text-align: center;
-            }
-            .nav {
-                flex-direction: column;
-                gap: 12px;
-            }
-            .nav a {
-                width: 90%;
-                height: 100px;
-                font-size: 18px;
-            }
-            .selection-table {
-                width: 95%;
-                padding: 20px;
-            }
-            .selection-table h2 {
-                font-size: 22px;
-            }
-            .selection-table select {
-                font-size: 16px;
-                padding: 12px;
-            }
-            .selection-table button {
-                font-size: 18px;
-                padding: 12px 20px;
-            }
+            .header { text-align: center; padding: 15px; }
+            .header h1 { display: block; font-size: 22px; }
+            .top-right-logo { position: static; margin: 0 auto 10px auto; text-align: center; }
+            .nav { flex-direction: column; gap: 12px; }
+            .nav a { width: 90%; height: 100px; font-size: 18px; }
+            .selection-table { width: 95%; padding: 20px; }
+            .selection-table h2 { font-size: 22px; }
         }
     </style>
 </head>
@@ -209,16 +188,17 @@
         </div>
         <h1><a href="https://mycathost.cz" style="color: white; text-decoration: none;">Mycat<span>Host</span></a></h1>
     </div>
-  <div class="nav">
+
+    <div class="nav">
         <a href="https://luky1212.github.io/MycatHost.cz-Basic/" class="basic"><span>Minecraft</span></a>
         <a href="https://luky1212.github.io/MycatHost.cz-Beefy/" class="beefy"><span>3D Tisk</span></a>
-        <a href="https://luky1212.github.io/MycatHost.cz-AboutUs/" class="about"><span>About Us</span></a>
-        <a href="https://luky1212.github.io/MycatHost.cz-DalsiSluzby/" class="dalsi"><span>Další Služby</span></a>
+        <a href="https://luky1212.github.io/MycatHost.cz-AboutUs/" class="about"><span>O nás</span></a>
+        <a href="https://luky1212.github.io/MycatHost.cz-DalsiSluzby/" class="dalsi"><span>Další služby</span></a>
     </div>
 
-    <!-- Výběrová tabulka -->
+    <!-- FORMULÁŘ -->
     <div class="selection-table">
-        <h2>Vyberte konfiguraci serveru</h2>
+        <h2>Vyberte konfiguraci Minecraft serveru</h2>
 
         <form id="serverForm">
             <select id="game">
@@ -237,10 +217,6 @@
                 <option>1.10</option>
                 <option>1.9</option>
                 <option>1.8</option>
-                <option>1.7</option>
-                <option>1.6</option>
-                <option>1.5</option>
-                <option>1.4</option>
             </select>
 
             <select id="ram">
@@ -266,11 +242,13 @@
             </select>
 
             <button type="button" onclick="sendEmail()">Odeslat konfiguraci</button>
-             <h2>Pokud máte komplikace např. tlačátko odeslat nic nedělá napiště na mail: klarzygame@gmail.com</h2>
+            <h2>Pokud tlačítko nefunguje, napište nám na <b>klarzygame@gmail.com</b></h2>
         </form>
     </div>
 
-    <div class="footer">MycatHost.cz 2025</div>
+    <div class="footer">
+        © <span>MycatHost.cz</span> 2025 — Rychlý a spolehlivý Minecraft hosting
+    </div>
 
     <script>
         function sendEmail() {
@@ -287,19 +265,12 @@
 
             const subject = encodeURIComponent("Nová konfigurace serveru");
             const body = encodeURIComponent(
-                `Zákazník vybral následující konfiguraci:\n\nVerze: ${game}\nRAM: ${ram}\nPočet Hráčů: ${storage}\nModifikace: ${os}`
+                `Zákazník vybral následující konfiguraci:\n\nVerze: ${game}\nRAM: ${ram}\nPočet hráčů: ${storage}\nModifikace: ${os}`
             );
             const mailtoLink = `mailto:klarzygame@gmail.com?subject=${subject}&body=${body}`;
             window.location.href = mailtoLink;
         }
     </script>
 
-   
 </body>
 </html>
-
-
-
-
-
-
